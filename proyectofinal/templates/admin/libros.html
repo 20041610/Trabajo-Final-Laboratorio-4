@@ -1,0 +1,93 @@
+{%include 'admin/cabecera.html'%}
+
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <div class="card">
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>Libros</p>
+            <form action="/admin/libros/guardar" method="post" enctype="multipart/form-data">
+              <div class="mb-3">
+                <label for="nombreDelLibro" class="form-label">Nombre del Libro</label>
+                <input type="text" class="form-control" name="nombreDelLibro" id="nombreDelLibro"
+                  placeholder="Escriba el nombre del libro" />
+              </div>
+              <div class="mb-3">
+                <label for="imagenDelLibro" class="form-label">Imagen del Libro</label>
+                <input type="file" class="form-control" name="imagenDelLibro" id="imagenDelLibro"
+                  placeholder="Seleccione la imagen del libro" />
+              </div>
+              <div class="mb-3">
+                <label for="urlDelLibro" class="form-label">URL del Libro</label>
+                <input type="text" class="form-control" name="urlDelLibro" id="urlDelLibro"
+                  placeholder="Escriba URL de descarga" />
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Agregar
+              </button>
+
+            </form>
+
+          </blockquote>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-7">
+      <div class="table">
+        <table class="table table-info table-bordered ">
+          <thead>
+            <tr>
+              <th scope="col"> ID</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Imagen</th>
+              <th scope="col">URL</th>
+              <th scope="col">Acciones</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for libro in libros %}
+            <tr>
+              <td>{{libro[0]}}</td>
+              <td>{{libro[1]}}</td>
+              <td><img width="60" src="/imagenes/{{libro[2]}}" class="img-fluid rounded-top" alt="">
+                {{libro[2]}}
+              </td>
+              <td>
+                <a name="" id="" class="btn btn-success" href="{{libro[3]}}" role="button">Enlace...</a>
+              </td>
+              <td>
+                <form action="/admin/libros/borrar" method="post">
+                  <button type="submit" class="btn btn-danger">
+                    Eliminar
+                  </button>
+                  <div class="mb-3">
+                    <input type="hidden" name="txtID" value="{{libro[0]}}" class="form-control" />
+                  </div>
+                </form>
+                <form action="/admin/actualizar" method="post">
+                  <div class="mb-3">
+                    <input type="hidden" name="txtID" value="{{libro[0]}}" class="form-control" />
+                  </div>
+                  <button type="submit" class="btn btn-warning">
+                    Actualizar
+                  </button>
+
+                </form>
+
+              </td>
+
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+{% include 'admin/pie.html' %}
