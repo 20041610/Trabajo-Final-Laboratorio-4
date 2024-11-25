@@ -1,0 +1,10 @@
+animal = "ChanchIto fEliz"
+print(animal.upper());"""Transforma todo el string a mayuscula"""
+print(animal.lower());"""Transforma todo en minuscula"""
+print(animal.capitalize());"""La primer letra mayuscula y el resto minuscula"""
+print(animal.title());"""Transforma en mayuscula las iniciales"""
+print(animal.strip());"""Quita los espacios de ambos lados del string"""
+print(animal.find("ch"));"""Devuelve el valor del caracter que se busca como argumento de esta funcion"""
+print(animal.replace("ch", "rr"));"""Reemplaza caracteres por otros"""
+print("ch" in animal);"""Devuelve true si existe ese string y false si no"""
+print("pr" not in animal);
